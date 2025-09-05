@@ -21,33 +21,6 @@ tests/
 └── test_api.py                  # API endpoints
 ```
 
-## Example Tests
-
-**Unit Test:**
-
-```python
-def test_distance_calculation():
-    calculator = GeofenceCalculator()
-    distance = calculator.calculate_distance_km(
-        40.7831, -73.9712, 
-        40.7831, -73.9712  
-    )
-    assert distance == 0.0
-```
-
-**API Test:**
-
-```python
-@pytest.mark.asyncio
-async def test_location_check():
-    async with AsyncClient(app=app) as client:
-        response = await client.post(
-            "/api/v1/location-check",
-            json={"device_id": "test", "lat": 40.7831, "lon": -73.9712}
-        )
-    assert response.status_code == 200
-```
-
 ## Test Database
 
 ```bash
