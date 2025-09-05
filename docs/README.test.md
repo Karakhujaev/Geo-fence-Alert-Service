@@ -71,40 +71,11 @@ docker-compose -f docker-compose.test.yml down
 ## Test Commands
 
 ```bash
-# Specific test file
 pytest tests/test_geofence_calculator.py -v
 
-# Specific test method
 pytest tests/test_api.py::test_location_check -v
 
-# Tests with keyword
 pytest tests/ -k "geofence" -v
 
-# Coverage report
 pytest tests/ --cov=. --cov-report=term-missing
 ```
-
-## Writing Tests
-
-**Test Structure:**
-
-```python
-import pytest
-from unittest.mock import AsyncMock
-
-class TestGeofenceService:
-    def setup_method(self):
-        self.mock_repository = AsyncMock()
-        self.service = GeofenceService(self.mock_repository, ...)
-    
-    @pytest.mark.asyncio
-    async def test_something(self):
-```
-
-**Required Packages:**
-
-- pytest
-- pytest-asyncio
-- httpx
-- pytest-mock
-- coverage
