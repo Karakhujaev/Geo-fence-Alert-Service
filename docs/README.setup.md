@@ -13,6 +13,7 @@ Verify: `curl http://localhost:8000/health`
 ## Manual Setup
 
 ### Prerequisites
+
 - Python 3.11+
 - PostgreSQL 15+
 - Redis (optional)
@@ -34,18 +35,19 @@ python main.py
 
 ```sql
 CREATE DATABASE geofence_db;
-CREATE USER geofence_user WITH PASSWORD 'your_password';
+CREATE USER geofence_user WITH PASSWORD 'password';
 GRANT ALL PRIVILEGES ON DATABASE geofence_db TO geofence_user;
 ```
 
 Load sample data:
+
 ```bash
 psql -U geofence_user -d geofence_db -f migrations/sample_data.sql
 ```
 
 ## Environment Variables
 
-```bash
+```env
 DATABASE_URL=postgresql://user:pass@localhost:5432/geofence_db
 REDIS_URL=redis://localhost:6379
 DEBUG=false
@@ -56,12 +58,14 @@ PORT=8000
 ## Production Deployment
 
 ### Docker
+
 ```bash
 docker build -t geofence-service .
 docker run -d -p 8000:8000 -e DATABASE_URL=... geofence-service
 ```
 
 ### Kubernetes
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -84,6 +88,7 @@ spec:
 ## Troubleshooting
 
 **Database connection issues:**
+
 ```bash
 psql -U geofence_user -d geofence_db -h localhost
 
@@ -91,6 +96,7 @@ sudo systemctl status postgresql
 ```
 
 **Port conflicts:**
+
 ```bash
 lsof -i :8000
 ```

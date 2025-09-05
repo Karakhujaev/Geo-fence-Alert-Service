@@ -72,7 +72,3 @@ make setup         # Full development setup
 make test          # Run tests with coverage
 make docker-up     # Start with Docker
 ```
-
-## License
-
-MIT License

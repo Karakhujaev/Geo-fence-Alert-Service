@@ -6,6 +6,7 @@
 pip install -r requirements-test.txt
 
 make test
+# or
 pytest tests/ -v
 
 pytest tests/ -v --cov=. --cov-report=html
@@ -23,17 +24,19 @@ tests/
 ## Example Tests
 
 **Unit Test:**
+
 ```python
 def test_distance_calculation():
     calculator = GeofenceCalculator()
     distance = calculator.calculate_distance_km(
-        40.7831, -73.9712,  
-        40.7831, -73.9712   
+        40.7831, -73.9712, 
+        40.7831, -73.9712  
     )
     assert distance == 0.0
 ```
 
 **API Test:**
+
 ```python
 @pytest.mark.asyncio
 async def test_location_check():
@@ -68,18 +71,23 @@ docker-compose -f docker-compose.test.yml down
 ## Test Commands
 
 ```bash
+# Specific test file
 pytest tests/test_geofence_calculator.py -v
 
+# Specific test method
 pytest tests/test_api.py::test_location_check -v
 
+# Tests with keyword
 pytest tests/ -k "geofence" -v
 
+# Coverage report
 pytest tests/ --cov=. --cov-report=term-missing
 ```
 
 ## Writing Tests
 
 **Test Structure:**
+
 ```python
 import pytest
 from unittest.mock import AsyncMock
@@ -94,6 +102,7 @@ class TestGeofenceService:
 ```
 
 **Required Packages:**
+
 - pytest
 - pytest-asyncio
 - httpx

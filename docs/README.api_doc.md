@@ -1,6 +1,6 @@
 # API Documentation
 
-Base URL: `http://localhost:8000`
+**Base URL:** `http://localhost:8000`
 
 ## Endpoints
 
@@ -15,6 +15,7 @@ curl -X POST "http://localhost:8000/api/v1/location-check" \
 ```
 
 **Request:**
+
 ```json
 {
   "device_id": "tractor_001",
@@ -24,6 +25,7 @@ curl -X POST "http://localhost:8000/api/v1/location-check" \
 ```
 
 **Response:**
+
 ```json
 {
   "device_id": "tractor_001",
@@ -36,11 +38,13 @@ curl -X POST "http://localhost:8000/api/v1/location-check" \
 ### Health Check
 
 **GET** `/health`
+
 ```bash
 curl http://localhost:8000/health
 ```
 
 **Response:**
+
 ```json
 {
   "status": "healthy",
@@ -50,13 +54,14 @@ curl http://localhost:8000/health
 
 ## Data Validation
 
-- `device_id`: Required string (min length: 1)
-- `lat`: Required number (-90 to 90)
-- `lon`: Required number (-180 to 180)
+- **device_id:** Required string (min length: 1)
+- **lat:** Required number (-90 to 90)
+- **lon:** Required number (-180 to 180)
 
 ## Error Responses
 
 **422 Validation Error:**
+
 ```json
 {
   "detail": [
@@ -70,6 +75,7 @@ curl http://localhost:8000/health
 ```
 
 **500 Server Error:**
+
 ```json
 {
   "detail": "Internal server error"
@@ -79,6 +85,7 @@ curl http://localhost:8000/health
 ## Events Published
 
 When device exits geofence:
+
 ```json
 {
   "event_type": "fence_exit",
@@ -93,6 +100,7 @@ When device exits geofence:
 ## Database Schema
 
 **Geofences:**
+
 ```sql
 CREATE TABLE geofences (
     id SERIAL PRIMARY KEY,
@@ -104,6 +112,7 @@ CREATE TABLE geofences (
 ```
 
 **Device States:**
+
 ```sql
 CREATE TABLE device_states (
     device_id VARCHAR(255) PRIMARY KEY,
@@ -125,12 +134,13 @@ INSERT INTO geofences (name, center_lat, center_lon, radius_km) VALUES
 
 ## Interactive Documentation
 
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
+- **Swagger UI:** `http://localhost:8000/docs`
+- **ReDoc:** `http://localhost:8000/redoc`
 
 ## Client Examples
 
 **Python:**
+
 ```python
 import requests
 
@@ -142,6 +152,7 @@ print(response.json())
 ```
 
 **JavaScript:**
+
 ```javascript
 fetch('http://localhost:8000/api/v1/location-check', {
     method: 'POST',
