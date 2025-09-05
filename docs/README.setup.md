@@ -1,7 +1,6 @@
 # Setup Guide
 
-## Docker Setup (Recommended)
-
+## Docker Setup 
 ```bash
 git clone https://github.com/Karakhujaev/Geo-fence-Alert-Service .
 make setup
