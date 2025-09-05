@@ -16,7 +16,7 @@ Verify: `curl http://localhost:8000/health`
 
 - Python 3.11+
 - PostgreSQL 15+
-- Redis (optional)
+- Redis
 
 ### Installation
 
